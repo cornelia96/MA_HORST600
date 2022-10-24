@@ -6,6 +6,7 @@ from opcua import Server
 from threading import Thread
 from datetime import datetime
 import socket
+from math import tan, atan, sqrt, pi
 
 # sth_wrong sets the everything_ok variable of the robot to "False", thus alerting the robot 
 # client to stop any movement and alert the user; additionally the client variable message 
@@ -23,25 +24,21 @@ def main():
 
     objects = server.get_objects_node() # assigning the objects node to a variable, so objects can be added
 
-    sensor_master = objects.add_object('ns=2;s="sensor_master"', "Sensormaster") # adding a sensor master as an object; the sensor client will register under this node
+    sensor_master = objects.add_object('ns=2;s="sensor_master"', "Sensormaster") # adding a sensor master as an object; the mqtt_opcua_bridge client will register under this node
     temperature = sensor_master.add_variable('ns=2;s="temp"', "Aktuelle Temperatur", 25) # adding temperature as a variable to the sensor master object
     temperature.set_writable() # setting the variable to writable so the opc ua client can modify its value according to the sensor readings
     
-    # adding 4 light gate variables to the sensor master and setting them to writable
-    light_gate_1 = sensor_master.add_variable('ns=2;s="light_gate_1"', "gate1", 0.0) 
-    light_gate_1.set_writable()
-    light_gate_2 = sensor_master.add_variable('ns=2;s="light_gate_2"', "gate2", 0.0)  
-    light_gate_2.set_writable()
-    light_gate_3 = sensor_master.add_variable('ns=2;s="light_gate_3"', "gate3", 0.0)  
-    light_gate_3.set_writable()
-    light_gate_4 = sensor_master.add_variable('ns=2;s="light_gate_4"', "gate4", 0.0) 
-    light_gate_4.set_writable()
+    # adding the rotation variables to the sensor master and setting them to writable
+    x_rotation = sensor_master.add_variable('ns=2;s="x_rotation"', "xRotation", 0.0) 
+    x_rotation.set_writable()
+    y_rotation = sensor_master.add_variable('ns=2;s="y_rotation"', "yRotation", 0.0)  
+    y_rotation.set_writable()
 
     # adding the robot as an object; the robot client will register under this node
     horsti = objects.add_object('ns=3;s="horsti"', "HORST600") 
     # adding the everything_ok variable to the robot node; this is what the robot client will check to see
     # if it should stop movements
-    everything_ok = horsti.add_variable('ns=3;s="everything_ok"', "Everything is okay", False)
+    everything_ok = horsti.add_variable('ns=3;s="everything_ok"', "Everything is okay", True)
     everything_ok.set_writable() #setting the variable to writable so the opc ua client can modify its value according to the sensor readings
     # adding the message variable to the robot node; this is the message that the robot client will display 
     # on the panel when something is wrong
@@ -56,13 +53,15 @@ def main():
     # reading the client variables from the sensor master and checking if they're within the acceptable 
     # range; if not, sth_wrong() is called with an appropriate message for the user    
     try:
-        while True:            
+        while True: 
+            abs_rotation_rad = atan(sqrt((tan(x_rotation))**2 + (tan(y_rotation))**2))
+            abs_rotation_deg = abs_rotation_rad*180/pi           
             if (temperature.get_value() > 40):
                 sth_wrong(everything_ok, message, "Die Temperatur hat den zulässigen Bereich überschritten! (40°C<)")
             elif (temperature.get_value()) < 5:
                 sth_wrong(everything_ok, message, "Die Temperatur hat den zulässigen Bereich unterschritten! (<5°C)")
-            elif (light_gate_1.get_value() == 0 or light_gate_2.get_value() == 0 or light_gate_3.get_value() == 0 or light_gate_4.get_value() == 0): 
-                sth_wrong(everything_ok, message, "Eine Lichtschranke wurde unterbrochen!")
+            elif (abs_rotation_deg > 5): 
+                sth_wrong(everything_ok, message, "Die Montagefläche hat die zulässige Neigung überschritten (5°)!")
             else:
                 sleep(0.001)
 
