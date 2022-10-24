@@ -23,7 +23,8 @@ while station.isconnected() == False:
 print(station.ifconfig())
 
 # setting the necessary constants 
-thermistor_pin = 34 # change to another pin if necessary
+thermistor_pin = 34 # change to the pin you are using
+dlight_barrier_pin = 35 # change to the pin you are using
 BETA = 4095 # value necessary for temperature conversion
 KELVIN_CONSTANT = 273.15 # value necessary for temperature conversion
 ADC_VALUE = 3950 # value necessary for temperature conversion
@@ -33,3 +34,5 @@ CLIENT_ID ='ESP32_TempSens'
 TOPIC_TEMP = 'temperature'
 TOPIC_XROT = 'x-rotation'
 TOPIC_YROT = 'y-rotation'
+TOPIC_IR = 'ir_sensor'
+TOPIC_MSG = 'message'
