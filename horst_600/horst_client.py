@@ -10,6 +10,7 @@ from PyQt6.QtCore import QSize, Qt
 # set variable as the ip adress of the opc ua server
 SERVER_IP = "XXXX" 
 PORTNO = "3470" 
+test = "yadayada"
 
 # Class Horst connects to HORST600 and can control the robot
 class Horst:
