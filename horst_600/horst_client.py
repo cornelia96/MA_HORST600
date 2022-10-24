@@ -128,31 +128,29 @@ def main():
     try: 
         app = QApplication(sys.argv)
 
-        window = MainWindow()
-
-        print(window.everything_ok.get_value())
-
-        while window.everything_ok.get_value():
+        window = MainWindow() # initializing window
+        
+        while window.everything_ok.get_value(): # as long as everything_ok is True, the program does nothing
             sleep(0.001)
 
-        if window.robi.isRunning():
-            window.robi.pause()
+        if window.robi.isRunning(): # checking if robot is currently moving
+            window.robi.pause() # pausing the robot
         
-        window.show()
-        app.exec()
+        window.show() # showing the window with the error message
+        app.exec() # finishing the program if the cancel button is pressed and the program exits 
         
-        opcua_client.disconnect()
-        app.quit()
-        print("Au Revoir")
+        opcua_client.disconnect() # disconnecting from the opc ua server
+        app.quit() # closing the window
 
+    # stopping the program if KeyboardInterrupt is triggered    
     except KeyboardInterrupt:
         try:
-            window.opcua_client.disconnect()
+            window.opcua_client.disconnect() # disconnecting from the opc ua server if possible
             app.quit()
-            print("disconnected")
         except:
             print("Goodbye")
 
+    # closing the program and restarting in case of an unexpected error
     except:
         try:
             window.opcua_client.disconnect()
