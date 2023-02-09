@@ -1,12 +1,12 @@
 import tensorflow.keras
 import numpy as np
-from status_led import StatusLed
+#from status_led import StatusLed
 
 class ImageClassification:
-    def __init__(self, model_path, status_led, safe_interface):
-        self.model_path = model_path
-        self.status_led = status_led
-        self.safe_interface = safe_interface
+    #def __init__(self, model_path, status_led, safe_interface):
+    #    self.model_path = model_path
+    #    self.status_led = status_led
+    #    self.safe_interface = safe_interface
 
     def loadModel(self):
         print('loading model...')
