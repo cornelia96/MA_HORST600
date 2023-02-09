@@ -19,8 +19,13 @@ class ImageClassification:
         print(prediction)
 
         if prediction[0] > 0.7:
-            self.status_led.setStatus(StatusLed.STATUS_OPEN)
-            self.safe_interface.open()
+            #Case 1
+            print('Case 1 detected')
+        elif prediction[1] > 0.7:
+            #Case 2
+            print('Case 2 detected')
+        elif prediction[2] > 0.7:
+            #Case 3
+            print('Case 3 detected')
         else:
-            self.status_led.setStatus(StatusLed.STATUS_CLOSED)
-            self.safe_interface.close()
+            print('Nothing detected')
