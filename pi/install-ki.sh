@@ -1,6 +1,5 @@
 #!/bin/sh
 
-#Wird alles als root installiert !!!
 
 #System updaten
 #sudo apt-get update
@@ -15,10 +14,10 @@ sudo apt-get -y install -y libatlas-base-dev libhdf5-dev libc-ares-dev libeigen3
 
 
 #pip updaten
-sudo pip3 install --upgrade pip
+pip3 install --upgrade pip
 
 #Python libraries installieren
-sudo pip3 install Pillow numpy pygame RPi.GPIO
+pip3 install Pillow numpy pygame RPi.GPIO
 
 #Aktuelles Tensorflow laden (alt)
 #mkdir lib
@@ -44,8 +43,8 @@ CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
 curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1o-H38Wpl38Hk3uByNukBWId8VieVwGt0" -o tensorflow-2.3.1-cp37-none-linux_armv7l.whl
 echo Download finished.
 
-sudo pip3 install --upgrade setuptools
-sudo pip3 install tensorflow-2.3.1-cp37-none-linux_armv7l.whl
+pip3 install --upgrade setuptools
+pip3 install tensorflow-2.3.1-cp37-none-linux_armv7l.whl
 
 cd ..
 
