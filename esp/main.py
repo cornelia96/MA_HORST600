@@ -13,8 +13,8 @@ while True:
     print("MQTT connection successfull")
     break
   except OSError: # may happen if the MQTT Broker hasn't gone online yet/isn't available
-    print("MQQT connect error")
-    sleep(0.001)
+    print("MQTT connect error")
+    sleep(1)
 
 # initializing the temperature sensor
 thermistor = ADC(Pin(thermistor_pin))

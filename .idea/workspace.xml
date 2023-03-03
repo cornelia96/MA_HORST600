@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="769e404b-2d3b-46df-a686-6a81605aeb37" name="Changes" comment="" />
+    <list default="true" id="769e404b-2d3b-46df-a686-6a81605aeb37" name="Changes" comment="komisches unnützes zeug">
+      <change beforePath="$PROJECT_DIR$/esp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/esp/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/horst_600/horst_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/horst_600/horst_client.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,11 +25,17 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/chipp/IdeaProjects",
+    "last_opened_file_path": "C:/Users/chipp/Documents/MA_HORST600/horst_600",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chipp\Documents\MA_HORST600\horst_600" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -36,10 +45,34 @@
       <option name="presentableId" value="Default" />
       <updated>1677847149995</updated>
       <workItem from="1677847151602" duration="48000" />
+      <workItem from="1677847252350" duration="211000" />
     </task>
+    <task id="LOCAL-00001" summary="komisches unnützes zeug">
+      <created>1677847322808</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677847322808</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="komisches unnützes zeug" />
+    <option name="LAST_COMMIT_MESSAGE" value="komisches unnützes zeug" />
   </component>
 </project>
